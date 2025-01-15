@@ -10,7 +10,7 @@ pycryptodomex==3.19.1
 pygubu==0.31
 pyppmd==1.1.0
 python-dateutil==2.8.2
-pyzstd==0.15.9
+pyzstd>=0.15.9,<0.17
 rarfile==4.1
 six==1.16.0
 texttable==1.7.0
