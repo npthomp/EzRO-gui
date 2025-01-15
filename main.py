@@ -364,11 +364,8 @@ class EzroApp:
         self.Export_FromList_PathChooser_ = []
         self.romListFileChoices = []
         self.Export_IncludeFrame_ = []
-        self.Export_IncludeSpecial_ = []
-        self.includeSpecialChoices = []
-        for i in range(len(SpecialCategories)):
-            self.Export_IncludeSpecial_.append([])
-            self.includeSpecialChoices.append([])
+        self.Export_IncludeSpecial_ = [[]]*len(SpecialCategories)
+        self.includeSpecialChoices = [[]]*len(SpecialCategories)
         self.Export_ExtractArchives_ = []
         self.extractArchivesChoices = []
         self.Export_ParentFolder_ = []
