@@ -1418,7 +1418,7 @@ class EzroApp:
         return romsInBestRegion, bestRegionIndex, bestRegion, bestRegionType
 
     def getAttributeSplit(self, name):
-        mna = [s.strip() for s in re.split('\(|\)|\[|\]', path.splitext(name)[0]) if s.strip() != ""]
+        mna = [s.strip() for s in re.split(r'\(|\)|\[|\]', path.splitext(name)[0]) if s.strip() != ""]
         if name.startswith(specialFolderPrefix+"BIOS"+specialFolderSuffix) and len(mna) > 1:
             mna[:2] = [specialFolderPrefix+"BIOS"+specialFolderSuffix+" "+mna[1]]
         mergeNameArray = []
@@ -1428,7 +1428,7 @@ class EzroApp:
                 if not ("," in mna[i] or "+" in mna[i]):
                     mergeNameArray.append(mna[i])
                 else:
-                    arrayWithComma = [s.strip() for s in re.split('\,|\+', mna[i]) if s.strip() != ""]
+                    arrayWithComma = [s.strip() for s in re.split(r'\,|\+', mna[i]) if s.strip() != ""]
                     for att2 in arrayWithComma:
                         mergeNameArray.append(att2)
         return mergeNameArray
@@ -1769,6 +1769,8 @@ class EzroApp:
         if len(self.romsCopied) + len(self.romsFailed) > 0:
             self.romsCopied.sort()
             self.romsFailed.sort()
+            if not os.path.exists(logFolder):
+                os.mkdir(logFolder)
             romsetLogFile = open(path.join(logFolder, currTime+" "+logType+" ("+currSystemName+") ["+str(len(self.romsCopied))+"] ["+str(len(self.romsFailed)+len(missingFavorites))+"].txt"), "w", encoding="utf-8", errors="replace")
             romsetLogFile.writelines("=== Copied "+str(len(self.romsCopied))+" new ROMs from \""+currSystemSourceFolder+"\" to \""+currSystemTargetFolder+"\" ===\n\n")
             for file in self.romsCopied:
