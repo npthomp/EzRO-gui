@@ -73,7 +73,7 @@ defaultSettingsFile = path.join(progFolder, "settings.ini")
 regionsFile = path.join(progFolder, "regions.ini")
 logFolder = path.join(progFolder, "Logs")
 
-systemListStr = "\"\" "+" ".join(["\""+sn+"\"" for sn in systemNamesDict.keys() if systemNamesDict[sn][0] != "Advanced"])
+systemListStr = '"" ' + " ".join([f'"{sn}"' for sn in systemNamesDict.keys() if systemNamesDict[sn][0] != "Advanced"])
 
 
 
@@ -398,9 +398,9 @@ class EzroApp:
     def export_toggleAdvancedSystems(self):
         global systemListStr
         if self.showAdvancedSystems.get():
-            systemListStr = "\"\" "+" ".join(["\""+sn+"\"" for sn in systemNamesDict.keys()])
+            systemListStr = '"" ' + " ".join([f'"{sn}"' for sn in systemNamesDict.keys()])
         else:
-            systemListStr = "\"\" "+" ".join(["\""+sn+"\"" for sn in systemNamesDict.keys() if systemNamesDict[sn][0] != "Advanced"])
+            systemListStr = '"" ' + " ".join([f'"{sn}"' for sn in systemNamesDict.keys() if systemNamesDict[sn][0] != "Advanced"])
         self.Export_System_Combobox.configure(values=systemListStr)
 
     def addSystemTab(self, systemName="New System", datFilePath="", romsetFolderPath="", outputFolderDirectory="",
