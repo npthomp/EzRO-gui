@@ -915,14 +915,14 @@ def simplifyNumBytes(numBytes, decimalPlaces=2):
 """
 def slugify(value, stripValue=True):
 	value = unicodedata.normalize('NFKD', value)
-	value = re.sub(':\s', ' - ', value)
-	value = re.sub(':', '-', value)
-	value = re.sub('\"', '\'', value)
-	value = re.sub('<', '[', value)
-	value = re.sub('>', ']', value)
-	value = re.sub('[\\/\*|]', '-', value)
-	value = re.sub('[?]', '_', value)
-	value = re.sub('[\s]+', ' ', value)
+	value = re.sub(r':\s', ' - ', value)
+	value = re.sub(r':', '-', value)
+	value = re.sub(r'"', "'", value)
+	value = re.sub(r'<', '[', value)
+	value = re.sub(r'>', ']', value)
+	value = re.sub(r'[/*|]', '-', value)
+	value = re.sub(r'[?]', '_', value)
+	value = re.sub(r'[\s]+', ' ', value)
 	if stripValue:
 		value = value.strip()
 	return value
